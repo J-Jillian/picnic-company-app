@@ -1,46 +1,40 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Logo from "../assets/logo.png";
-import { FaBeer, FaTimes, FaBars } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import "../style/navbar.css";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [click, setClick] = useState(false);
+  const handleOnclick = () => setClick(!click);
+
   return (
     <header>
       <nav className="navbar">
         <div className="logo">
-          <Link to="/">
-            <img src={Logo} alt="website-logo" />
-          </Link>
+          <img src={Logo} width={120} alt="website-logo" />
         </div>
-        <ul className="nav-menu">
+        <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
-            <Link to="/" className="nav-link">
-              HOME
-            </Link>
+            <Link className="nav-link">About</Link>
           </li>
           <li className="nav-item">
-            <Link to="/" className="nav-link">
-              PACKAGES
-            </Link>
+            <Link className="nav-link">Packages</Link>
           </li>
           <li className="nav-item">
-            <Link to="/" className="nav-link">
-              FAQ
-            </Link>
+            <Link className="nav-link">F&Q</Link>
           </li>
           <li className="nav-item">
-            <Link to="/" className="nav-link">
-              CONTACT US
-            </Link>
+            <Link className="nav-link">Contact</Link>
           </li>
           <li className="nav-item">
-            <Link to="/" className="nav-link">
-              ABOUT
-            </Link>
+            <Link className="nav-link">Sing In</Link>
           </li>
         </ul>
-        <div className="hamburger">
-          <FaBars />
+
+        <div className="hamburger" onClick={handleOnclick}>
+          {click ? <FaTimes size={20} /> : <FaBars size={20} />}
         </div>
       </nav>
     </header>
