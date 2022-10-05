@@ -15,6 +15,7 @@ const Navbar = () => {
         <div className="logo">
           <img src={Logo} width={120} alt="website-logo" />
         </div>
+        
         <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
             <Link className="nav-link">About</Link>
